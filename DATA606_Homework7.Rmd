@@ -1,0 +1,183 @@
+---
+title: "Untitled"
+author: "Alexis Mekueko"
+date: "10/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r load-packages, message=FALSE}
+
+library(tidyverse) #loading all library needed for this assignment
+library(openintro)
+library(infer)
+library(gplots)
+
+library(httr)
+library(rvest)
+library(xml2)
+#head(fastfood)
+#library(readxl)
+#library(data.table)
+#library(readr)
+#library(plyr)
+#library(dplyr)
+#library(dice)
+# #library(VennDiagram)
+# #library(help = "dice")
+#library(DBI)
+#library(dbplyr)
+
+#library(rstudioapi)
+#library(RJDBC)
+#library(odbc)
+#library(RSQLite)
+#library(rvest)
+#library(stringr)
+#library(readtext)
+#library(ggpubr)
+#library(fitdistrplus)
+#library(ggplot2)
+#library(moments)
+#library(qualityTools)
+library(normalp)
+#library(utils)
+#library(MASS)
+#library(qqplotr)
+library(DATA606)
+getLabs()
+library(knitr)
+#library(StMoSim)
+
+
+
+```
+
+
+```{r }
+
+# webinars/31-Web-APIs/frozen.R 
+url <- "http://www.omdbapi.com/?t=frozen&y=2013&plot=short&r=json"
+
+frozen <- GET(url)
+frozen
+
+details <- content(frozen, "parse")
+
+details$Year
+
+
+
+```
+
+
+
+```{r }
+
+
+# webinars/32-Web-Scraping/best-places.R    ...https://github.com/rstudio/webinars/blob/master/32-Web-Scraping/best-places.R
+
+
+orlando <- read_html("http://www.bestplaces.net/climate/city/florida/orlando") 
+
+tables <- html_nodes(orlando, css = "table") 
+
+html_table(tables,fill = TRUE, header = TRUE)[[2]]
+
+
+
+ # webinars/32-Web-Scraping/frozen.R .....https://github.com/rstudio/webinars/blob/master/32-Web-Scraping/frozen.R
+ 
+ 
+ library(rvest)
+
+# 1. Download the HTML and turn it into an XML file with read_html()
+frozen <- read_html("http://www.imdb.com/title/tt2294629/")
+
+# 2. Extract specific nodes with html_nodes()
+cast <- html_nodes(frozen, "span.itemprop")
+
+# 3. Extract content from nodes with html_text(), html_name(), 
+#    html_attrs(), html_children(), html_table()
+html_text(cast)
+cast
+html_name(cast)
+html_attrs(cast)
+html_children(cast)
+
+
+# selectorGadget
+# The above code captures non-actor/actress values. The following
+# CSS derived with selectorGadget works better.
+cast2 <- html_nodes(frozen, "#titleCast span.itemprop")
+html_text(cast2)
+
+cast3 <- html_nodes(frozen, ".itemprop .itemprop")
+html_text(cast3)
+
+
+```
+
+
+
+```{r }
+
+
+orlando <- read_html("http://www.bestplaces.net/climate/city/florida/orlando") 
+
+tables <- html_nodes(orlando, css = "table") 
+
+html_table(tables, header = TRUE)[[2]]
+
+
+```
+
+
+
+```{r }
+
+orlando <- read_html("http://www.bestplaces.net/climate/city/florida/orlando") 
+
+tables <- html_nodes(orlando, css = "table") 
+
+html_table(tables, header = TRUE)[[2]]
+
+
+```
+
+
+
+```{r }
+
+
+orlando <- read_html("http://www.bestplaces.net/climate/city/florida/orlando") 
+
+tables <- html_nodes(orlando, css = "table") 
+
+html_table(tables, header = TRUE)[[2]]
+
+
+```
+
+
+
+```{r }
+
+
+orlando <- read_html("http://www.bestplaces.net/climate/city/florida/orlando") 
+
+tables <- html_nodes(orlando, css = "table") 
+
+html_table(tables, header = TRUE)[[2]]
+
+
+```
+
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
